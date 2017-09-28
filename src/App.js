@@ -37,7 +37,9 @@ class BooksApp extends React.Component {
             bookshelves.forEach(bookshelf => mappedShelves[bookshelf.key] = bookshelf)
 
             const originalShelf = mappedShelves[book.shelf]
-            originalShelf.books = originalShelf.books.filter(currentBook => book.id !== currentBook.id)
+            if(originalShelf) {
+                originalShelf.books = originalShelf.books.filter(currentBook => book.id !== currentBook.id)
+            }
 
             mappedShelves[newBookshelf].books.push(book)
             book.shelf = newBookshelf
@@ -57,7 +59,7 @@ class BooksApp extends React.Component {
                     <Dashboard bookshelves={this.state.bookshelves} moveBookToList={(book, listAction) => this.moveBookToList(book, listAction)}/>
                 )}/>
                 <Route path='/search' render={({history}) => (
-                    <Search/>
+                    <Search bookshelves={this.state.bookshelves} moveBookToList={(book, listAction) => this.moveBookToList(book, listAction)} />
                 )}/>
             </div>
         )

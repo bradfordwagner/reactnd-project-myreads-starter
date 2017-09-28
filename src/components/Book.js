@@ -1,8 +1,16 @@
 import React from 'react'
 
 class Book extends React.Component {
-    log(event) {
+    moveBook(event) {
         this.props.moveBookToList(this.props.book, event.target.value)
+    }
+
+    buildAuthorNames = (book) => {
+        if (book && book.authors) {
+            return book.authors.join(",")
+        } else {
+            return "unknown"
+        }
     }
 
     render() {
@@ -12,7 +20,7 @@ class Book extends React.Component {
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + this.props.book.imageLinks.thumbnail + '")' }}></div>
                         <div className="book-shelf-changer">
-                            <select onChange={this.log.bind(this)} defaultValue='none'>
+                            <select onChange={this.moveBook.bind(this)} defaultValue='none'>
                                 <option value="none" disabled>Move to...</option>
                                 {this.props.bookshelves.map(bookshelf => (
                                     <option key={bookshelf.key} value={bookshelf.key}>{bookshelf.displayText}</option>
@@ -22,7 +30,7 @@ class Book extends React.Component {
                         </div>
                     </div>
                     <div className="book-title">{this.props.book.title}</div>
-                    <div className="book-authors">{this.props.book.authors.join(", ")}</div>
+                    <div className="book-authors">{this.buildAuthorNames(this.props.book)}</div>
                 </div>
             </li>
         )

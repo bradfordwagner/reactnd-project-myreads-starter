@@ -1,6 +1,30 @@
 import React from 'react'
+import * as BooksAPI from '../BooksAPI'
+import Book from "./Book";
 
 class Search extends React.Component {
+    state = {
+        query: '',
+        maxResults: 20,
+        books: []
+    }
+
+    handleChange = (event) => {
+        const query = event.target.value
+        this.setState({query})
+        this.search(query)
+    }
+
+    search = (query) => {
+        console.log(`searching for ${query}`)
+        BooksAPI.search(query, this.state.maxResults).then(books => {
+            if (books && !books.error) {
+                console.log(`safetly settings books ${books.length}`)
+                this.setState({books})
+            }
+        })
+    }
+
     render() {
         return (
             <div className="search-books">
@@ -15,11 +39,16 @@ class Search extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                        <input type="text" placeholder="Search by title or author"/>
+                        <input type="text" value={this.state.query} onChange={this.handleChange} placeholder="Search by title or author"/>
+                        {/*<pre>query: {this.state.query}</pre>*/}
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <ol className="books-grid"></ol>
+                    <ol className="books-grid">
+                        {this.state.books.map(book => (
+                            <Book key={book.id} book={book} bookshelves={this.props.bookshelves} moveBookToList={(book, listAction) => this.props.moveBookToList(book, listAction)}/>
+                        ))}
+                    </ol>
                 </div>
             </div>
         )

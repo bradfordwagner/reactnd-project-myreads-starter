@@ -13,7 +13,7 @@ class Bookshelf extends React.Component {
                 <h2 className="bookshelf-title">{this.props.name}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                        <Book book={this.state.testBook}/>
+                        <Book book={this.state.testBook} bookshelfTypes={this.props.bookshelfTypes}/>
                         <li>
                             <div className="book">
                                 <div className="book-top">

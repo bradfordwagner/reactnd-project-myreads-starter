@@ -74,7 +74,7 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
-                <Bookshelf name={"My Innocent Shelf"}/>
+                <Bookshelf name={"My Innocent Shelf"} bookshelfTypes={this.state.bookshelfTypes}/>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">

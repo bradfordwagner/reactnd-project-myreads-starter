@@ -30,11 +30,31 @@ class BooksApp extends React.Component {
         })
     }
 
+    moveBookToList(book, newBookshelf) {
+        this.setState(state => {
+            const bookshelves = state.bookshelves
+            const mappedShelves = {}
+            bookshelves.forEach(bookshelf => mappedShelves[bookshelf.key] = bookshelf)
+
+            const originalShelf = mappedShelves[book.shelf]
+            originalShelf.books = originalShelf.books.filter(currentBook => book.id !== currentBook.id)
+
+            mappedShelves[newBookshelf].books.push(book)
+            book.shelf = newBookshelf
+
+            return {
+                bookshelves
+            }
+        })
+
+        BooksAPI.update(book, newBookshelf)
+    }
+
     render() {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <Dashboard bookshelves={this.state.bookshelves}/>
+                    <Dashboard bookshelves={this.state.bookshelves} moveBookToList={(book, listAction) => this.moveBookToList(book, listAction)}/>
                 )}/>
                 <Route path='/search' render={({history}) => (
                     <Search/>

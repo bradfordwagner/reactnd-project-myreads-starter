@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
                 <div className="list-books-content">
                     <div>
                         {this.props.bookshelves.map(bookshelf => (
-                            <Bookshelf bookshelves={this.props.bookshelves} bookshelf={bookshelf} key={bookshelf.key}/>
+                            <Bookshelf bookshelves={this.props.bookshelves} bookshelf={bookshelf} key={bookshelf.key} moveBookToList={(book, listAction) => this.props.moveBookToList(book, listAction)}/>
                         ))}
                     </div>
                 </div>

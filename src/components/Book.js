@@ -1,6 +1,10 @@
 import React from 'react'
 
 class Book extends React.Component {
+    log(event) {
+        this.props.moveBookToList(this.props.book, event.target.value)
+    }
+
     render() {
         return (
             <li>
@@ -8,10 +12,10 @@ class Book extends React.Component {
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + this.props.book.imageLinks.thumbnail + '")' }}></div>
                         <div className="book-shelf-changer">
-                            <select>
+                            <select onChange={this.log.bind(this)} defaultValue='none'>
                                 <option value="none" disabled>Move to...</option>
                                 {this.props.bookshelves.map(bookshelf => (
-                                    <option key={bookshelf.key}  value={bookshelf.key}>{bookshelf.displayText}</option>
+                                    <option key={bookshelf.key} value={bookshelf.key}>{bookshelf.displayText}</option>
                                 ))}
                                 <option value="none">None</option>
                             </select>

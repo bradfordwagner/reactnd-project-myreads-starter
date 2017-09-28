@@ -2,7 +2,6 @@ import React from 'react'
 
 class Book extends React.Component {
     render() {
-        debugger
         return (
             <li>
                 <div className="book">
@@ -11,6 +10,9 @@ class Book extends React.Component {
                         <div className="book-shelf-changer">
                             <select>
                                 <option value="none" disabled>Move to...</option>
+                                {this.props.bookshelves.map(bookshelf => (
+                                    <option key={bookshelf.key}  value={bookshelf.key}>{bookshelf.displayText}</option>
+                                ))}
                                 <option value="none">None</option>
                             </select>
                         </div>

@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
-import Search from "./components/Search";
 import {buildDefaultLists, defaultLists, defaultShelves} from "./definitions/BookshelfType"
 import Dashboard from "./components/Dashboard";
 import * as BooksAPI from './BooksAPI'
+import {Route} from "react-router-dom";
+import Search from "./components/Search";
 
 class BooksApp extends React.Component {
     state = {
@@ -32,11 +33,12 @@ class BooksApp extends React.Component {
     render() {
         return (
             <div className="app">
-                {this.state.showSearchPage ? (
-                    <Search/>
-                ) : (
+                <Route exact path='/' render={() => (
                     <Dashboard bookshelves={this.state.bookshelves}/>
-                )}
+                )}/>
+                <Route path='/search' render={({history}) => (
+                    <Search/>
+                )}/>
             </div>
         )
     }

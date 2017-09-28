@@ -1,6 +1,6 @@
 import React from 'react'
 
-class SearchPage extends React.Component {
+class Search extends React.Component {
     render() {
         return (
             <div className="search-books">
@@ -16,7 +16,6 @@ class SearchPage extends React.Component {
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
                         <input type="text" placeholder="Search by title or author"/>
-
                     </div>
                 </div>
                 <div className="search-books-results">
@@ -27,4 +26,4 @@ class SearchPage extends React.Component {
     }
 }
 
-export default SearchPage
+export default Search

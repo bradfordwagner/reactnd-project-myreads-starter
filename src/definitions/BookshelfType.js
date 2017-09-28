@@ -1,7 +1,7 @@
 
 class BookshelfType {
     constructor(uniqueName, displayText) {
-        this.uniqueName = uniqueName
+        this.key = uniqueName
         this.displayText = displayText
         this.clear()
     }

@@ -17,7 +17,7 @@ class BooksApp extends React.Component {
                 const bookshelves = state.bookshelves
                 const mappedShelves = {}
                 bookshelves.forEach(bookshelf => {
-                    mappedShelves[bookshelf.uniqueName] = bookshelf
+                    mappedShelves[bookshelf.key] = bookshelf
                     bookshelf.clear()
                 })
 

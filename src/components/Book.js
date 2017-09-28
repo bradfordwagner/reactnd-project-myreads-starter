@@ -2,6 +2,7 @@ import React from 'react'
 
 class Book extends React.Component {
     render() {
+        debugger
         return (
             <li>
                 <div className="book">

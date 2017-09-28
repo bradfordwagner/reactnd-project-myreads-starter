@@ -1,4 +1,5 @@
 import React from 'react'
+import Bookshelf from "./Bookshelf";
 
 class Dashboard extends React.Component {
     render() {
@@ -9,6 +10,9 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="list-books-content">
                     <div>
+                        {this.props.bookshelves.map(bookshelf => (
+                            <Bookshelf bookshelf={bookshelf}/>
+                        ))}
                     </div>
                 </div>
                 <div className="open-search">

@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Search from "./components/Search";
 import {buildDefaultLists, defaultLists, defaultShelves} from "./definitions/BookshelfType"

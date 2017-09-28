@@ -10,7 +10,7 @@ class Book extends React.Component {
                         <div className="book-shelf-changer">
                             <select>
                                 <option value="none" disabled>Move to...</option>
-                                {this.props.bookshelfTypes.map(bookshelfType => (
+                                {this.props.bookshelves.map(bookshelfType => (
                                     <option value={bookshelfType.uniqueName}>{bookshelfType.displayText}</option>
                                 ))}
                                 <option value="none">None</option>

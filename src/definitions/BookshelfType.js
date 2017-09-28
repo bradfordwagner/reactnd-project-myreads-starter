@@ -3,21 +3,25 @@ class BookshelfType {
     constructor(uniqueName, displayText) {
         this.uniqueName = uniqueName
         this.displayText = displayText
+        this.clear()
+    }
+
+    clear() {
+        this.books = []
+    }
+
+    push(book) {
+        this.books.push(book)
     }
 }
 
 const defaultShelves = [
-    new BookshelfType("reading", "Currently Reading"),
-    new BookshelfType("wishlist", "Want to Read"),
-    new BookshelfType("finished", "Read")
+    new BookshelfType("currentlyReading", "Currently Reading"),
+    new BookshelfType("wantToRead", "Want to Read"),
+    new BookshelfType("read", "Read")
 ]
 
-// initialize default lists so we have a list per type, which will be a list of books
-const defaultLists = {}
-defaultShelves.forEach(bookShelfType => defaultLists[bookShelfType.uniqueName] = []);
 
 export {
-    BookshelfType,
-    defaultShelves,
-    defaultLists
+    defaultShelves
 }

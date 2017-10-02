@@ -21,5 +21,6 @@ const defaultShelves = [
     new BookshelfType("read", "Read")
 ]
 
-
-export default defaultShelves
+export {
+    defaultShelves
+}

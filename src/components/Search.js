@@ -17,10 +17,8 @@ class Search extends React.Component {
     }
 
     search = (query) => {
-        console.log(`searching for ${query}`)
         BooksAPI.search(query, this.state.maxResults).then(books => {
             if (books && !books.error) {
-                console.log(`safetly settings books ${books.length}`)
                 this.setState({books})
             }
         })

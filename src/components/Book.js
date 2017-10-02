@@ -7,7 +7,7 @@ class Book extends React.Component {
 
     buildAuthorNames = (book) => {
         if (book && book.authors) {
-            return book.authors.join(",")
+            return book.authors.join(", ")
         } else {
             return "unknown"
         }

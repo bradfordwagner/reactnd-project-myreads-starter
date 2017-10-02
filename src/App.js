@@ -39,10 +39,11 @@ class BooksApp extends React.Component {
             const originalShelf = mappedShelves[book.shelf]
             if(originalShelf) {
                 originalShelf.books = originalShelf.books.filter(currentBook => book.id !== currentBook.id)
+                delete originalShelf.myMappedBooks[book.id]
             }
 
             if (mappedShelves[newBookshelf]) {
-                mappedShelves[newBookshelf].books.push(book)
+                mappedShelves[newBookshelf].push(book)
             }
             book.shelf = newBookshelf
 

@@ -17,8 +17,22 @@ class Search extends React.Component {
     }
 
     search = (query) => {
+        if (!query || query === '') {
+            this.setState({books: []})
+        }
         BooksAPI.search(query, this.state.maxResults).then(books => {
             if (books && !books.error) {
+                const bookshelves = this.props.bookshelves
+                books.forEach(book => {
+                    const bookFromShelf = bookshelves.reduce((bookFromShelf, shelf) => (bookFromShelf ? bookFromShelf : shelf.myMappedBooks[book.id]), undefined)
+                    if(bookFromShelf) {
+                        book.shelf = bookFromShelf.shelf
+                    }
+                })
+
+                this.setState({books})
+            } else {
+                const books = []
                 this.setState({books})
             }
         })

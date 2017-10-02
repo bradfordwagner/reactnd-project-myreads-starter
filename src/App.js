@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import {buildDefaultLists, defaultLists, defaultShelves} from "./definitions/BookshelfType"
+import {defaultShelves} from "./definitions/BookshelfType"
 import Dashboard from "./components/Dashboard";
 import * as BooksAPI from './BooksAPI'
 import {Route} from "react-router-dom";

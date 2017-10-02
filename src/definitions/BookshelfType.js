@@ -8,10 +8,12 @@ class BookshelfType {
 
     clear() {
         this.books = []
+        this.myMappedBooks = {}
     }
 
     push(book) {
         this.books.push(book)
+        this.myMappedBooks[book.id] = book
     }
 }
 

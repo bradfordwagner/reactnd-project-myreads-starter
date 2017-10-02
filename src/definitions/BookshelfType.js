@@ -22,6 +22,4 @@ const defaultShelves = [
 ]
 
 
-export {
-    defaultShelves
-}
+export default defaultShelves

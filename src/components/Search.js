@@ -30,7 +30,7 @@ class Search extends React.Component {
                 <div className="search-books-bar">
                     <Link className="close-search" to='/'/>
                     <div className="search-books-input-wrapper">
-                        <input type="text" value={this.state.query} onChange={this.handleChange} placeholder="Search by title or author"/>
+                        <input autoFocus type="text" value={this.state.query} onChange={this.handleChange} placeholder="Search by title or author"/>
                     </div>
                 </div>
                 <div className="search-books-results">
